@@ -1,0 +1,14 @@
+{
+  "name": "message-hub",
+  "version": "1.0.0",
+  "description": "A NodeJS library to consolidate multiple messaging platforms into one simple, event-driven API",
+  "main": "index.js",
+  "author": "klemze",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "discord.js": "^11.4.2",
+    "express": "^4.16.4",
+    "request": "^2.88.0"
+  }
+}
