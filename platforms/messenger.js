@@ -52,8 +52,6 @@ module.exports = class PlatformMessenger extends PlatformBase
 		this.router.route('/facebook_messenger')
 			.get((req, res) =>
 			{
-				console.log(`Got GET`)
-
 				let mode = req.query['hub.mode'],
 					token = req.query['hub.verify_token'],
 					challenge = req.query['hub.challenge']
@@ -74,7 +72,6 @@ module.exports = class PlatformMessenger extends PlatformBase
 			})
 			.post((req, res) =>
 			{
-				console.log(`Got POST`)
 				if(!req.body || req.body.object != 'page')
 				{
 					res.sendStatus(403)

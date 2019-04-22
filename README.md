@@ -6,6 +6,7 @@ A NodeJS library to consolidate multiple messaging platforms into one simple, ev
     - [Discord](#discord)
     - [Facebook Messenger](#facebook-messenger)
  - [Credits](#credits)
+ - [License](#license)
 
 ### Installation
 To add *Message Hub* to a *NodeJS* project simply install from *npm*
@@ -48,8 +49,6 @@ hub.addPlatform(new PlatformDiscord(discordOptions))
 On Facebook's [main site](https://www.facebook.com) create a new page
 
 On Facebook's [developer site](https://developers.facebook.com/) create a new app and add the *Messenger product*, then go to it's settings.
-
-![Messenger Add Product](./images/messenger_add_product.png)
 
 In the *Messenger* settings, under *Access Tokens* select the page you created in the
 above step (*you may have to 'Edit Permissions' to the right of the
