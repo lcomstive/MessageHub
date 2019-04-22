@@ -14,7 +14,7 @@ module.exports = class HubMessage
 		this.hub = messageHub
 		this.platform = platformName
 		this.user = userID
-		this.message = messageContents
+		this.text = messageContents
 		this.additional = additional
 	}
 	
@@ -26,7 +26,7 @@ module.exports = class HubMessage
 			console.log(`[MSG_HUB][ERROR] Cannot find platform \'${this.platform}\'`)
 			return
 		}
-		this.message = text
+		this.text = text
 		platform.sendMessage(this)
 	}
 }

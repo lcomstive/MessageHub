@@ -10,25 +10,26 @@ module.exports =
 {
 	MessageHub: class MessageHub
 	{
+		// platforms : PlatformBase[] - Array of platforms to add to the hub
 		constructor(platforms = [])
 		{
 			this.router = new Express.Router()
 			this.router.use(BodyParser.json())
 			this.router.use(BodyParser.urlencoded({ extended: true }))
-			
+
+			this._platforms = platforms || []
 			this._callbacks = new Map()
-			this._platforms = []
-			platforms.forEach(platform => this.addPlatform(platform))
+
+			this._platforms.forEach(platform => this.addPlatform(platform))
 		}
 
 		addPlatform(platform)
 		{
 			if(!platform || !platform.name || !platform.router)
 				return
-			this.router.use(platform.router)
 			this._platforms.push(this._initializePlatform(platform))
 		}
-		
+
 		getPlatform(name)
 		{
 			name = name.toLowerCase()
@@ -37,7 +38,7 @@ module.exports =
 					return this._platforms[i]
 			return undefined
 		}
-		
+
 		send(platformName, receiverID, text, additional = undefined) { new HubMessage(this, platformName, receiverID, '', additional).reply(text) }
 
 		on(eventName, callback)
@@ -45,6 +46,7 @@ module.exports =
 			if(!this._callbacks.has(eventName))
 				this._callbacks.set(eventName, [])
 			this._callbacks.get(eventName).push(callback)
+			return this
 		}
 
 		_getCallbacks(eventName) { return this._callbacks.get(eventName) }
