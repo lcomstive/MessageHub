@@ -48,7 +48,6 @@ module.exports = class PlatformMessenger extends PlatformBase
 	{
 		if(!this.router)
 			return
-		console.log('FB Router found')
 		this.router.route('/facebook_messenger')
 			.get((req, res) =>
 			{
